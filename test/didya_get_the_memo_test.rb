@@ -21,14 +21,29 @@ class DidyaGetTheMemoTest < Minitest::Test
     memoize :foo
   end
 
-  def test_only_run_once
-    obj = Memoized.new
+  def setup
+    @obj = Memoized.new
     assert_equal 0, obj.run_count
+  end
 
-    assert_equal 'hello', obj.foo
-    assert_equal 1, obj.run_count
+  attr_reader :obj
 
+  def call_foo(expected_run_count)
     assert_equal 'hello', obj.foo
-    assert_equal 1, obj.run_count
+    assert_equal expected_run_count, obj.run_count
+  end
+
+  def test_only_run_once
+    call_foo(1)
+    call_foo(1)
+  end
+
+  def test_forget
+    call_foo(1)
+
+    obj.forget(:foo)
+
+    call_foo(2)
+    call_foo(2)
   end
 end

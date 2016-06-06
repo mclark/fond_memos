@@ -1,14 +1,14 @@
 require 'test_helper'
 
-class DidyaGetTheMemoTest < Minitest::Test
+class FondMemosTest < Minitest::Test
   PERFORMANCE_COUNT = 1_000_000
 
   def test_that_it_has_a_version_number
-    refute_nil ::DidyaGetTheMemo::VERSION
+    refute_nil ::FondMemos::VERSION
   end
 
   class Memoized
-    include DidyaGetTheMemo
+    include FondMemos
 
     attr_reader :run_count, :multi_arg_calls
 
@@ -97,11 +97,11 @@ class DidyaGetTheMemoTest < Minitest::Test
       PERFORMANCE_COUNT.times { obj.traditional_memoization }
     end
 
-    didya = Benchmark.realtime do
+    fond = Benchmark.realtime do
       PERFORMANCE_COUNT.times { obj.memoized }
     end
 
-    puts "ratio: #{traditional / didya}"
+    puts "ratio: #{traditional / fond}"
   end
 
   def test_multi_performance
@@ -110,10 +110,10 @@ class DidyaGetTheMemoTest < Minitest::Test
       PERFORMANCE_COUNT.times { obj.traditional_multi_arg(5, 3) }
     end
 
-    didya_multi = Benchmark.realtime do
+    fond_multi = Benchmark.realtime do
       PERFORMANCE_COUNT.times { obj.multi_arg(5, 3) }
     end
 
-    puts "ratio: #{traditional_multi / didya_multi}"
+    puts "ratio: #{traditional_multi / fond_multi}"
   end
 end

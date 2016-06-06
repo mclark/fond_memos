@@ -1,17 +1,17 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'didya_get_the_memo/version'
+require 'fond_memos/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'didya_get_the_memo'
-  spec.version       = DidyaGetTheMemo::VERSION
+  spec.name          = 'fond_memos'
+  spec.version       = FondMemos::VERSION
   spec.authors       = ['Matt Clark']
   spec.email         = ['matt.clark.1@gmail.com']
 
   spec.summary       = 'Simple, effective memoization.'
   spec.description   = "Memoization so simple you could have written it. But I did it, so you don't have to."
-  spec.homepage      = 'https://github.com/mclark/didya_get_the_memo'
+  spec.homepage      = 'https://github.com/mclark/fond_memos'
   spec.license       = 'MIT'
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or

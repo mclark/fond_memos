@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in didya_get_the_memo.gemspec
+# Specify your gem's dependencies in fond_memos.gemspec
 gemspec
 
 group 'test' do

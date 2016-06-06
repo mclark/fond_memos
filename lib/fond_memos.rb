@@ -1,7 +1,7 @@
-require 'didya_get_the_memo/version'
+require 'fond_memos/version'
 
 # Include this module in classes that have methods you want to memoize.
-module DidyaGetTheMemo
+module FondMemos
   def self.included(base)
     base.extend ClassMethods
   end
@@ -14,12 +14,12 @@ module DidyaGetTheMemo
 
   private
 
-  def _didya_fetch(var_name, original_method)
+  def _fond_fetch(var_name, original_method)
     return instance_variable_get(var_name) if instance_variable_defined?(var_name)
     instance_variable_set(var_name, original_method.bind(self).call)
   end
 
-  def _didya_multi_fetch(var_name, original_method, args)
+  def _fond_multi_fetch(var_name, original_method, args)
     instance_variable_set(var_name, {}) unless instance_variable_defined?(var_name)
     hash = instance_variable_get(var_name)
     key = args.map(&:hash)
@@ -39,9 +39,9 @@ module DidyaGetTheMemo
         original_method = instance_method(m)
         var_name = Internal.var_name(original_method.name)
         if original_method.arity.zero?
-          define_method(m) { _didya_fetch(var_name, original_method) }
+          define_method(m) { _fond_fetch(var_name, original_method) }
         else
-          define_method(m) { |*args| _didya_multi_fetch(var_name, original_method, args) }
+          define_method(m) { |*args| _fond_multi_fetch(var_name, original_method, args) }
         end
       end
     end

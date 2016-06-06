@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ['matt.clark.1@gmail.com']
 
   spec.summary       = 'Simple, effective memoization.'
-  spec.description   = "Memoization so simple you could have written it. But I did it, so you don't have to."
+  spec.description   = "Memoization so simple you could have written it. But I did, so you don't have to."
   spec.homepage      = 'https://github.com/mclark/fond_memos'
   spec.license       = 'MIT'
 

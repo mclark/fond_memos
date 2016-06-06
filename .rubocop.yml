@@ -4,3 +4,7 @@ Metrics/LineLength:
 Style/Documentation:
   Exclude:
     - test/**
+
+Metrics/AbcSize:
+  Exclude:
+    - test/**

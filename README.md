@@ -4,7 +4,11 @@ Another memoization gem, this time with simpler, easier to read code that hopefu
 It just uses instance variables and hashes, no magic, nothing you wouldn't do in typical `@a ||= expensive_op`
 memoization. It just extracts that logic out of methods where it shouldn't be in the first place.
 
+Tested with ruby 2.1.9 and 2.3.1. It most likely works with other versions, it just hasn't been tested with them yet.
+
 ## Installation
+
+Install [bundler](http://bundler.io) if you don't already have it (`gem install bundler`).
 
 Add this line to your application's Gemfile:
 
@@ -62,8 +66,10 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Alternatives
 
-* [memoizable](https://github.com/dkubb/memoizable)
-* [memoist](https://github.com/matthewrudy/memoist)
+These are battle tested, solid memoization libraries. Check them out to ensure you choose the right library for you!
+
+* [memoizable](https://github.com/dkubb/memoizable) - threadsafe, very elegant design.
+* [memoist](https://github.com/matthewrudy/memoist) - extracted from the original code from Rails' old `ActiveSupport::Memoizable`.
 
 ## Contributing
 

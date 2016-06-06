@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class FondMemosTest < Minitest::Test
-  PERFORMANCE_COUNT = 1_000_000
+  PERFORMANCE_COUNT = 100_000
 
   def test_that_it_has_a_version_number
     refute_nil ::FondMemos::VERSION

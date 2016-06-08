@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class FondMemosTest < Minitest::Test
-  PERFORMANCE_COUNT = 100_000
+  PERFORMANCE_COUNT = 100
 
   def test_that_it_has_a_version_number
     refute_nil ::FondMemos::VERSION
@@ -90,30 +90,27 @@ class FondMemosTest < Minitest::Test
     call_multi_arg(5, 3, expected_count: 2)
   end
 
-  def test_performance
+  def compare_performance(traditional_proc, memoized_proc)
     require 'benchmark'
 
     traditional = Benchmark.realtime do
-      PERFORMANCE_COUNT.times { obj.traditional_memoization }
+      PERFORMANCE_COUNT.times(&traditional_proc)
     end
 
     fond = Benchmark.realtime do
-      PERFORMANCE_COUNT.times { obj.memoized }
+      PERFORMANCE_COUNT.times(&memoized_proc)
     end
 
     puts "ratio: #{traditional / fond}"
   end
 
-  def test_multi_performance
-    require 'benchmark'
-    traditional_multi = Benchmark.realtime do
-      PERFORMANCE_COUNT.times { obj.traditional_multi_arg(5, 3) }
-    end
+  def single_performance
+    compare_performance(-> (_) { obj.traditional_memoization },
+                        -> (_) { obj.memoized })
+  end
 
-    fond_multi = Benchmark.realtime do
-      PERFORMANCE_COUNT.times { obj.multi_arg(5, 3) }
-    end
-
-    puts "ratio: #{traditional_multi / fond_multi}"
+  def multi_performance
+    compare_performance(-> (_) { obj.traditional_multi_arg(5, 3) },
+                        -> (_) { obj.multi_arg(5, 3) })
   end
 end

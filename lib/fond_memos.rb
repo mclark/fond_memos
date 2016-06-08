@@ -66,6 +66,7 @@ module FondMemos
       methods.each do |m|
         original_method = instance_method(m)
         var_name = Internal.var_name(original_method.name)
+        undef_method(m)
         if original_method.arity.zero?
           define_method(m) { _fond_fetch(var_name, original_method) }
         else

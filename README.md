@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/mclark/fond_memos.svg?branch=master)](https://travis-ci.org/mclark/fond_memos)
+
 # FondMemos
 
 Another memoization gem, this time with simpler, easier to read code that hopefully everyone will feel safe using.
